@@ -1,0 +1,47 @@
+plugins {
+    id "org.springframework.boot" version "2.7.3"
+}
+
+apply plugin: "java"
+apply plugin: "io.spring.dependency-management"
+
+group "com.devtest"
+version "1.0-SNAPSHOT"
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir "src/main/java"
+        }
+    }
+}
+
+ext {
+    caffeineVersion = "3.1.1"
+    guavaVersion = '31.1-jre'
+    apacheVersion = "3.12.0"
+    junitVersion = '4.13.2'
+    mockitoVersion = '4.7.0'
+}
+
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter-web"
+
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+    implementation "mysql:mysql-connector-java"
+
+    implementation "org.springframework.boot:spring-boot-starter-cache"
+    implementation "com.github.ben-manes.caffeine:caffeine"
+
+    implementation "com.google.guava:guava:$guavaVersion"
+    implementation "org.apache.commons:commons-lang3:$apacheVersion"
+
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    testImplementation "com.h2database:h2"
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testImplementation "junit:junit:$junitVersion"
+}

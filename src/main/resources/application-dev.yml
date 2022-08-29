@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/service
+    username: dev
+    password: test
+  sql:
+    init.mode: always
+  jpa:
+    show-sql: false
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    properties:
+      hibernate:
+        ddl-auto: none
+        format_sql: false
+        generate_statistics: false
+  cache:
+    cache-names: service
+    caffeine.spec: maximumSize=10000,expireAfterAccess=60s
+logging.level:
+  org.hibernate.stat: DEBUG
+  org.springframework.cache: INFO
